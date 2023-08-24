@@ -10,6 +10,8 @@ import {
 import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
 import Link from 'next/link';
 import { ModeToggle } from '@/components/ui/theme-mode-toggle';
+import { CustomSelect } from '@/components/custom-select';
+import { languages } from '@/localization/languages';
 
 const Header = () => {
     return (
@@ -39,7 +41,12 @@ const Header = () => {
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
-            <ModeToggle />
+            <div className="mx-8 flex items-center justify-between">
+                <div className="mr-2">
+                    <ModeToggle />
+                </div>
+                <CustomSelect label="Language" options={languages} placeholder="select language" />
+            </div>
         </div>
     );
 };
