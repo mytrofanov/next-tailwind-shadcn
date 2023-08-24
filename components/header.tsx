@@ -24,6 +24,13 @@ const Header = () => {
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
+                        <Link href="/register" legacyBehavior passHref>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">Register</h4>
+                            </NavigationMenuLink>
+                        </Link>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
                         <Link href="/about" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">About</h4>
