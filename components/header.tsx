@@ -18,12 +18,16 @@ const Header = () => {
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <Link href="/" legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>Home</NavigationMenuLink>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">Home</h4>
+                            </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <Link href="/about" legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>About</NavigationMenuLink>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">About</h4>
+                            </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
                 </NavigationMenuList>
