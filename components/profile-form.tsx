@@ -43,7 +43,7 @@ export function ProfileForm() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-sm mx-auto">
                 <FormField
                     control={form.control}
                     name="username"
@@ -86,7 +86,9 @@ export function ProfileForm() {
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit" className="text-sm px-4 py-2">
+                    Submit
+                </Button>
             </form>
         </Form>
     );

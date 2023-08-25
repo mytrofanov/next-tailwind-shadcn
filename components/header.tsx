@@ -15,33 +15,40 @@ import { languages } from '@/localization/languages';
 
 const Header = () => {
     return (
-        <div className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div className="mx-auto flex max-w-4xl items-center justify-between p-6 lg:px-8" aria-label="Global">
             <NavigationMenu>
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <Link href="/" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">Home</h4>
+                                <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">Home</h4>
                             </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <Link href="/register" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">Register</h4>
+                                <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">Register</h4>
                             </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <Link href="/about" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">About</h4>
+                                <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">About</h4>
+                            </NavigationMenuLink>
+                        </Link>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <Link href="/account" legacyBehavior passHref>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">Account</h4>
                             </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
-            <div className="mx-8 flex items-center justify-between">
+            <div className="flex items-center justify-between">
                 <div className="mr-2">
                     <ModeToggle />
                 </div>

@@ -20,7 +20,7 @@ export function CustomSelect(props: CustomSelectProps) {
     const { label, options, placeholder } = props;
     return (
         <Select>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[180px] text-sm ">
                 <SelectValue placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent>
