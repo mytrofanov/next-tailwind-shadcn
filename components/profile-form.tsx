@@ -8,17 +8,30 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
 
-const formSchema = z.object({
-    username: z.string().min(2, {
-        message: 'Username must be at least 2 characters.',
-    }),
-});
+const formSchema = z
+    .object({
+        username: z.string().min(2, {
+            message: 'Username must be at least 2 characters.',
+        }),
+        password: z.string().min(6, {
+            message: 'Password must be at least 6 characters.',
+        }),
+        confirmPassword: z.string().min(6, {
+            message: 'Password must be at least 6 characters.',
+        }),
+    })
+    .refine(data => data.password === data.confirmPassword, {
+        message: "Passwords don't match",
+        path: ['confirmPassword'],
+    });
 
 export function ProfileForm() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             username: '',
+            password: '',
+            confirmPassword: '',
         },
     });
 
@@ -36,15 +49,39 @@ export function ProfileForm() {
                     name="username"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>
-                                <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">Username</h4>
-                            </FormLabel>
+                            <FormLabel>Username</FormLabel>
                             <FormControl>
-                                <Input placeholder="shadcn" {...field} />
+                                <Input placeholder="your user-name" {...field} />
                             </FormControl>
-                            <FormDescription>
-                                <span className="mt-6 pl-6 italic">This is your public display name.</span>
-                            </FormDescription>
+                            <FormDescription>This is your public display name</FormDescription>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Password</FormLabel>
+                            <FormControl>
+                                <Input placeholder="new password" {...field} type="password" />
+                            </FormControl>
+                            <FormDescription>Create new password</FormDescription>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="confirmPassword"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Confirm Password</FormLabel>
+                            <FormControl>
+                                <Input placeholder="repeat new password" {...field} type="password" />
+                            </FormControl>
+                            <FormDescription>Repeat your new password</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
