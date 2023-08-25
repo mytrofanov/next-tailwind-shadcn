@@ -1,15 +1,18 @@
+'use client';
+
 import React from 'react';
 
 import { locales } from '@/localization';
 import { StoreAction } from '@/shared/types';
+import { LocaleType } from '@/localization/locale-types';
 
 interface GlobalStore {
     isAuthenticated: boolean;
-    defaultLocale: string;
-    locale: string;
+    defaultLocale: LocaleType;
+    locale: LocaleType;
 }
 
-type GlobalStoreActions = StoreAction<'reset'> | StoreAction<'user-activate'> | StoreAction<'locale-set'>;
+type GlobalStoreActions = StoreAction<'reset'> | StoreAction<'locale-set', LocaleType>;
 
 const initialStoreState: GlobalStore = {
     isAuthenticated: false,

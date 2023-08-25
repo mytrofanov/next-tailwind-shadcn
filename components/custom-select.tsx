@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 import {
@@ -12,14 +14,16 @@ import {
 
 interface CustomSelectProps {
     placeholder: string;
-    label: string;
+    label?: string;
     options: any[];
+    onSelect: (selected: string) => void;
 }
 
 export function CustomSelect(props: CustomSelectProps) {
-    const { label, options, placeholder } = props;
+    const { label, options, placeholder, onSelect } = props;
+
     return (
-        <Select>
+        <Select onValueChange={onSelect}>
             <SelectTrigger className="w-[180px] text-sm ">
                 <SelectValue placeholder={placeholder} />
             </SelectTrigger>
@@ -28,7 +32,7 @@ export function CustomSelect(props: CustomSelectProps) {
                     <SelectLabel>{label}</SelectLabel>
                     {options.map(option => {
                         return (
-                            <SelectItem key={option.name} value={option.name}>
+                            <SelectItem key={option.name} value={option.locale}>
                                 {option.name}
                             </SelectItem>
                         );

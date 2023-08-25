@@ -3,8 +3,9 @@ import flat from 'flat';
 
 import en from './translations/en';
 import ua from './translations/ua';
+import { LocaleMap } from '@/localization/locale-types';
 
-const locales = {
+const locales: LocaleMap = {
     en: 'en-US',
     ua: 'uk-UA',
 };

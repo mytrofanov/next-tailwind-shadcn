@@ -11,9 +11,11 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useIntl } from '@/shared/hooks';
 
 export function ModeToggle() {
     const { setTheme } = useTheme();
+    const { fm } = useIntl();
 
     return (
         <DropdownMenu>
@@ -26,13 +28,13 @@ export function ModeToggle() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={() => setTheme('light')}>
-                    <div className="text-sm">Light</div>
+                    <div className="text-sm">{fm('modeToggle.light')}</div>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme('dark')}>
-                    <div className="text-sm">Dark</div>
+                    <div className="text-sm">{fm('modeToggle.dark')}</div>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme('system')}>
-                    <div className="text-sm">System</div>
+                    <div className="text-sm">{fm('modeToggle.system')}</div>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

@@ -4,4 +4,15 @@ export default {
             title: 'General Information',
         },
     },
+    header: {
+        home: 'Home',
+        register: 'Register',
+        about: 'About',
+        account: 'Account',
+    },
+    modeToggle: {
+        light: 'Light',
+        dark: 'Dark',
+        system: 'System',
+    },
 };
