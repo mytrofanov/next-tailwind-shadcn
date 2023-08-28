@@ -1,36 +1,25 @@
-'use client';
-
 import React from 'react';
-import { IntlProvider } from 'react-intl';
-import dayjs from 'dayjs';
-import 'dayjs/locale/uk';
+import { LocaleType } from '@/localization/locale-types';
+import { i18n } from '@/i18n-config';
 
-import { useGlobalStore } from '@/store/global.store';
-import { selectLocaleMessages } from '@/localization/locale.service';
-
-dayjs.locale('en');
-
-interface ConfigurationProps {
-    children: React.ReactNode;
+export async function generateStaticParams() {
+    return i18n.locales.map(locale => ({ lang: locale }));
 }
 
-const LocaleProvider = (props: ConfigurationProps) => {
-    const { children } = props;
+interface LocaleLayoutProps {
+    children: React.ReactNode;
+    lang: LocaleType;
+}
 
-    const [state] = useGlobalStore();
-
-    const { messages } = React.useMemo(() => {
-        dayjs.locale(state.locale);
-        return {
-            messages: selectLocaleMessages(state.locale),
-        };
-    }, [state.locale]);
+export const LocaleLayout = async ({ children, params }: { children: React.ReactNode; params: { lang: string } }) => {
+    // const { children, lang } = props;
+    // console.log('lang: ', lang);
 
     return (
-        <IntlProvider messages={messages} locale={state.locale} defaultLocale={state.defaultLocale}>
-            {children}
-        </IntlProvider>
+        <html lang={params.lang}>
+            <body>{children}</body>
+        </html>
     );
 };
 
-export default LocaleProvider;
+export default LocaleLayout;

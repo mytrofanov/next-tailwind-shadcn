@@ -1,5 +1,4 @@
 'use client';
-
 import React from 'react';
 import {
     NavigationMenu,
@@ -10,59 +9,75 @@ import {
 import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
 import Link from 'next/link';
 import { ModeToggle } from '@/components/ui/theme-mode-toggle';
-import { CustomSelect } from '@/components/custom-select';
-import { languages } from '@/localization/languages';
 import { useGlobalStore } from '@/store/global.store';
+import { LangSelect } from '@/components/lang-select';
+import { Locale } from '@/i18n-config';
 import { LocaleType } from '@/localization/locale-types';
-import { useIntl } from '@/shared/hooks';
+import { langPathName } from '@/utils';
 
-const Header = () => {
+interface HeaderProps {
+    lang: Locale;
+    dictionary: any;
+}
+
+const Header = (props: HeaderProps) => {
+    const { lang, dictionary } = props;
     const [state, dispatch] = useGlobalStore();
-    const { fm } = useIntl();
 
     const handleChangeLanguage = (newLocale: string) => {
+        console.log('newLocale: ', newLocale);
         dispatch({
             type: 'locale-set',
             payload: newLocale as LocaleType,
         });
     };
+    React.useEffect(() => {
+        if (lang) {
+            dispatch({
+                type: 'locale-set',
+                payload: lang as LocaleType,
+            });
+        }
+    }, [lang]);
+
+    console.log('lang: ', lang);
 
     return (
         <div className="mx-auto flex max-w-4xl items-center justify-between p-6 lg:px-8" aria-label="Global">
             <NavigationMenu>
                 <NavigationMenuList>
                     <NavigationMenuItem>
-                        <Link href="/" legacyBehavior passHref>
+                        <Link href={langPathName('/', lang)} legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {fm('header.home')}
+                                    {dictionary['header'].home}
                                 </h4>
                             </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/register" legacyBehavior passHref>
+                        <Link href={langPathName('/register', lang)} legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {fm('header.register')}
+                                    {dictionary['header'].register}
                                 </h4>
                             </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/about" legacyBehavior passHref>
+                        <Link href={langPathName('/about', lang)} legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {fm('header.about')}
+                                    {dictionary['header'].about}
                                 </h4>
                             </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/account" legacyBehavior passHref>
+                        <Link href={langPathName('/account', lang)} legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {fm('header.account')}
+                                    {dictionary['header'].account}
                                 </h4>
                             </NavigationMenuLink>
                         </Link>
@@ -71,9 +86,9 @@ const Header = () => {
             </NavigationMenu>
             <div className="flex items-center justify-between">
                 <div className="mr-2">
-                    <ModeToggle />
+                    <ModeToggle dictionary={dictionary['modeToggle']} />
                 </div>
-                <CustomSelect options={languages} placeholder="select language" onSelect={handleChangeLanguage} />
+                <LangSelect placeholder="select language" onSelect={handleChangeLanguage} />
             </div>
         </div>
     );
