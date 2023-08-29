@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { locales } from '@/localization';
-import { StoreAction } from '@/shared/types';
+import { StoreAction } from '../lib/types';
 import { LocaleType } from '@/localization/locale-types';
 
 interface GlobalStore {
