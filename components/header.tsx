@@ -14,6 +14,7 @@ import ModeToggle from '@/components/theme-mode-toggle';
 import { Locale } from '@/i18n-config';
 import { LocaleType } from '@/localization/locale-types';
 import { langPathName } from '@/lib/utils';
+import { HeaderDictionary, ModeToggleDictionary } from '@/localization';
 
 interface HeaderProps {
     lang: Locale;

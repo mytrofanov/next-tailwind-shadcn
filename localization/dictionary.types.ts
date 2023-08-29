@@ -1,25 +1,25 @@
-interface AccountSettings {
+export interface AccountSettings {
     title: string;
 }
 
-interface AccountDictionary {
+export interface AccountDictionary {
     accountSettings: AccountSettings;
 }
 
-interface HeaderDictionary {
+export interface HeaderDictionary {
     home: string;
     register: string;
     about: string;
     account: string;
 }
 
-interface ModeToggleDictionary {
+export interface ModeToggleDictionary {
     light: string;
     dark: string;
     system: string;
 }
 
-interface Dictionary {
+export interface Dictionary {
     account: AccountDictionary;
     header: HeaderDictionary;
     modeToggle: ModeToggleDictionary;

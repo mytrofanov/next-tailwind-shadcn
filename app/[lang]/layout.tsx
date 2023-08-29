@@ -8,6 +8,7 @@ import { GlobalStoreProvider } from '@/store/global.store';
 import { LocaleType } from '@/localization/locale-types';
 import { i18n } from '@/i18n-config';
 import { getDictionary } from '@/get-dictionary';
+import { Dictionary } from '@/localization';
 
 const inter = Inter({ subsets: ['latin'] });
 

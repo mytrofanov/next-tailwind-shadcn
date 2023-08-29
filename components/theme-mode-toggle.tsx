@@ -9,6 +9,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { ModeToggleDictionary } from '@/localization';
 
 interface ModeToggleProps {
     dictionary: ModeToggleDictionary;
