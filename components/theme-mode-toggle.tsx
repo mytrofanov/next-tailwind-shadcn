@@ -1,5 +1,3 @@
-// 'use client';
-
 import * as React from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -11,11 +9,14 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useIntl } from '@/shared/hooks';
 
-export function ModeToggle() {
+interface ModeToggleProps {
+    dictionary: ModeToggleDictionary;
+}
+
+const ModeToggle = (props: ModeToggleProps) => {
+    const { dictionary } = props;
     const { setTheme } = useTheme();
-    const { fm } = useIntl();
 
     return (
         <DropdownMenu>
@@ -28,15 +29,17 @@ export function ModeToggle() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={() => setTheme('light')}>
-                    <div className="text-sm">{fm('modeToggle.light')}</div>
+                    <div className="text-sm">{dictionary?.light}</div>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme('dark')}>
-                    <div className="text-sm">{fm('modeToggle.dark')}</div>
+                    <div className="text-sm">{dictionary?.dark}</div>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme('system')}>
-                    <div className="text-sm">{fm('modeToggle.system')}</div>
+                    <div className="text-sm">{dictionary?.system}</div>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     );
-}
+};
+
+export default ModeToggle;

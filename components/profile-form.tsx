@@ -25,7 +25,7 @@ const formSchema = z
         path: ['confirmPassword'],
     });
 
-export function ProfileForm() {
+const ProfileForm = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -92,4 +92,6 @@ export function ProfileForm() {
             </form>
         </Form>
     );
-}
+};
+
+export default ProfileForm;
