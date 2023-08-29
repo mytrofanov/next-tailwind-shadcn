@@ -1,4 +1,4 @@
-export type LocaleType = 'en-US' | 'uk-UA';
+export type LocaleType = 'en' | 'ua';
 
 export type LocaleMap = {
     [key: string]: LocaleType;
@@ -6,5 +6,5 @@ export type LocaleMap = {
 
 export enum ShortLanguages {
     en = 'en',
-    ua = 'uk',
+    ua = 'ua',
 }

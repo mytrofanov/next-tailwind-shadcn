@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 interface ModeToggleProps {
-    dictionary: any;
+    dictionary: ModeToggleDictionary;
 }
 
 export const ModeToggle = (props: ModeToggleProps) => {
@@ -31,13 +31,13 @@ export const ModeToggle = (props: ModeToggleProps) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={() => setTheme('light')}>
-                    <div className="text-sm">{dictionary['modeToggle']?.light}</div>
+                    <div className="text-sm">{dictionary?.light}</div>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme('dark')}>
-                    <div className="text-sm">{dictionary['modeToggle']?.dark}</div>
+                    <div className="text-sm">{dictionary?.dark}</div>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme('system')}>
-                    <div className="text-sm">{dictionary['modeToggle']?.system}</div>
+                    <div className="text-sm">{dictionary?.system}</div>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

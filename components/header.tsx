@@ -17,11 +17,12 @@ import { langPathName } from '@/utils';
 
 interface HeaderProps {
     lang: Locale;
-    dictionary: any;
+    headerDictionary: HeaderDictionary;
+    modeToggleDictionary: ModeToggleDictionary;
 }
 
 const Header = (props: HeaderProps) => {
-    const { lang, dictionary } = props;
+    const { lang, headerDictionary, modeToggleDictionary } = props;
     const [state, dispatch] = useGlobalStore();
 
     const handleChangeLanguage = (newLocale: string) => {
@@ -50,7 +51,7 @@ const Header = (props: HeaderProps) => {
                         <Link href={langPathName('/', lang)} legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {dictionary['header'].home}
+                                    {headerDictionary.home}
                                 </h4>
                             </NavigationMenuLink>
                         </Link>
@@ -59,7 +60,7 @@ const Header = (props: HeaderProps) => {
                         <Link href={langPathName('/register', lang)} legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {dictionary['header'].register}
+                                    {headerDictionary.register}
                                 </h4>
                             </NavigationMenuLink>
                         </Link>
@@ -68,7 +69,7 @@ const Header = (props: HeaderProps) => {
                         <Link href={langPathName('/about', lang)} legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {dictionary['header'].about}
+                                    {headerDictionary.about}
                                 </h4>
                             </NavigationMenuLink>
                         </Link>
@@ -77,7 +78,7 @@ const Header = (props: HeaderProps) => {
                         <Link href={langPathName('/account', lang)} legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {dictionary['header'].account}
+                                    {headerDictionary.account}
                                 </h4>
                             </NavigationMenuLink>
                         </Link>
@@ -86,7 +87,7 @@ const Header = (props: HeaderProps) => {
             </NavigationMenu>
             <div className="flex items-center justify-between">
                 <div className="mr-2">
-                    <ModeToggle dictionary={dictionary['modeToggle']} />
+                    <ModeToggle dictionary={modeToggleDictionary} />
                 </div>
                 <LangSelect placeholder="select language" onSelect={handleChangeLanguage} />
             </div>

@@ -22,17 +22,22 @@ export async function generateStaticParams() {
 
 interface RootLayoutProps {
     children: React.ReactNode;
-    params: { locale: LocaleType };
+    params: { lang: LocaleType };
 }
 
-const RootLayout = async ({ children, params }: { children: React.ReactNode; params: { lang: string } }) => {
-    const dictionary = await getDictionary(params.lang as any);
+const RootLayout = async (props: RootLayoutProps) => {
+    const { children, params } = props;
+    const dictionary: Dictionary = await getDictionary(params.lang);
     return (
         <html lang={params.lang}>
             <body>
                 <GlobalStoreProvider>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                        <Header dictionary={dictionary} lang={params.lang as any} />
+                        <Header
+                            headerDictionary={dictionary['header']}
+                            modeToggleDictionary={dictionary['modeToggle']}
+                            lang={params.lang}
+                        />
                         {children}
                     </ThemeProvider>
                 </GlobalStoreProvider>
