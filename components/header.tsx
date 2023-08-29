@@ -13,7 +13,7 @@ import LangSelect from '@/components/lang-select';
 import ModeToggle from '@/components/theme-mode-toggle';
 import { Locale } from '@/i18n-config';
 import { LocaleType } from '@/localization/locale-types';
-import { langPathName } from '@/utils';
+import { langPathName } from '@/lib/utils';
 
 interface HeaderProps {
     lang: Locale;

@@ -3,9 +3,9 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { redirectedPathName } from '@/utils';
+import { redirectedPathName } from '@/lib/utils';
 import { LocaleType } from '@/localization/locale-types';
-import { currentLanguageName } from '@/utils/current-language-name';
+import { currentLanguageName } from '@/lib/utils/current-language-name';
 
 interface LangSelectProps {
     currentLocale: LocaleType;
