@@ -25,13 +25,6 @@ const Header = (props: HeaderProps) => {
     const { lang, headerDictionary, modeToggleDictionary } = props;
     const [state, dispatch] = useGlobalStore();
 
-    const handleChangeLanguage = (newLocale: string) => {
-        console.log('newLocale: ', newLocale);
-        dispatch({
-            type: 'locale-set',
-            payload: newLocale as LocaleType,
-        });
-    };
     React.useEffect(() => {
         if (lang) {
             dispatch({
@@ -39,9 +32,7 @@ const Header = (props: HeaderProps) => {
                 payload: lang as LocaleType,
             });
         }
-    }, [lang]);
-
-    console.log('lang: ', lang);
+    }, [dispatch, lang]);
 
     return (
         <div className="mx-auto flex max-w-4xl items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -89,7 +80,7 @@ const Header = (props: HeaderProps) => {
                 <div className="mr-2">
                     <ModeToggle dictionary={modeToggleDictionary} />
                 </div>
-                <LangSelect placeholder="select language" onSelect={handleChangeLanguage} />
+                <LangSelect currentLocale={lang} />
             </div>
         </div>
     );

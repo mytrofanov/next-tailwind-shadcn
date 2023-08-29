@@ -6,8 +6,8 @@ import ua from './translations/ua';
 import { LocaleMap } from '@/localization/locale-types';
 
 const locales: LocaleMap = {
-    en: 'en-US',
-    ua: 'uk-UA',
+    en: 'en',
+    ua: 'ua',
 };
 
 const selectLocaleMessages = (locale: string): Record<string, MessageFormatElement[]> | undefined => {
