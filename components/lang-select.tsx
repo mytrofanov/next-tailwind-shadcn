@@ -11,7 +11,7 @@ interface LangSelectProps {
     currentLocale: LocaleType;
 }
 
-export function LangSelect(props: LangSelectProps) {
+const LangSelect = (props: LangSelectProps) => {
     const { currentLocale } = props;
     const pathName = usePathname();
 
@@ -20,4 +20,6 @@ export function LangSelect(props: LangSelectProps) {
             {currentLanguageName(currentLocale)}
         </Link>
     );
-}
+};
+
+export default LangSelect;

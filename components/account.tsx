@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-export function Account() {
+const Account = () => {
     return (
         <Tabs defaultValue="account" className="w-[280px]">
             <TabsList className="grid w-full grid-cols-2 text-sm">
@@ -59,4 +59,6 @@ export function Account() {
             </TabsContent>
         </Tabs>
     );
-}
+};
+
+export default Account;

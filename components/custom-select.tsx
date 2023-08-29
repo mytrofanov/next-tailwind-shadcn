@@ -19,7 +19,7 @@ interface CustomSelectProps {
     onSelect: (selected: string) => void;
 }
 
-export function CustomSelect(props: CustomSelectProps) {
+const CustomSelect = (props: CustomSelectProps) => {
     const { label, options, placeholder, onSelect } = props;
 
     return (
@@ -41,4 +41,6 @@ export function CustomSelect(props: CustomSelectProps) {
             </SelectContent>
         </Select>
     );
-}
+};
+
+export default CustomSelect;

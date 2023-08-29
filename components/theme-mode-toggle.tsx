@@ -1,5 +1,3 @@
-// 'use client';
-
 import * as React from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -16,7 +14,7 @@ interface ModeToggleProps {
     dictionary: ModeToggleDictionary;
 }
 
-export const ModeToggle = (props: ModeToggleProps) => {
+const ModeToggle = (props: ModeToggleProps) => {
     const { dictionary } = props;
     const { setTheme } = useTheme();
 
@@ -43,3 +41,5 @@ export const ModeToggle = (props: ModeToggleProps) => {
         </DropdownMenu>
     );
 };
+
+export default ModeToggle;

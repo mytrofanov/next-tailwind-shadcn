@@ -8,9 +8,9 @@ import {
 } from '@/components/ui/navigation-menu';
 import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
 import Link from 'next/link';
-import { ModeToggle } from '@/components/ui/theme-mode-toggle';
 import { useGlobalStore } from '@/store/global.store';
-import { LangSelect } from '@/components/lang-select';
+import LangSelect from '@/components/lang-select';
+import ModeToggle from '@/components/theme-mode-toggle';
 import { Locale } from '@/i18n-config';
 import { LocaleType } from '@/localization/locale-types';
 import { langPathName } from '@/utils';
@@ -21,7 +21,7 @@ interface HeaderProps {
     modeToggleDictionary: ModeToggleDictionary;
 }
 
-const Header = (props: HeaderProps) => {
+export const Header = (props: HeaderProps) => {
     const { lang, headerDictionary, modeToggleDictionary } = props;
     const [state, dispatch] = useGlobalStore();
 

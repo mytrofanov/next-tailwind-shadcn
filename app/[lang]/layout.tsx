@@ -3,7 +3,7 @@ import '../../styles/globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/styles/theme-provider';
-import Header from '@/components/header';
+import { Header } from '@/components/header';
 import { GlobalStoreProvider } from '@/store/global.store';
 import { LocaleType } from '@/localization/locale-types';
 import { i18n } from '@/i18n-config';

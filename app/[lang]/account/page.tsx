@@ -1,4 +1,4 @@
-import { Account } from '@/components/account';
+import Account from '@/components/account';
 
 export default function Register() {
     return (

@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { Progress } from '@/components/ui/progress';
 
-export function ProgressBar() {
+const ProgressBar = () => {
     const [progress, setProgress] = React.useState(13);
 
     React.useEffect(() => {
@@ -17,4 +17,6 @@ export function ProgressBar() {
             <Progress value={progress} className="w-[60%]" />
         </div>
     );
-}
+};
+
+export default ProgressBar;
