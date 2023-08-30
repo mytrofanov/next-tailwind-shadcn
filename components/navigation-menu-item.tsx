@@ -8,7 +8,7 @@ interface NavigationMenuItemProps {
     title: string;
 }
 
-const MenuItem = (props: NavigationMenuItemProps) => {
+const NavMenuItem = (props: NavigationMenuItemProps) => {
     const { link, title } = props;
     const pathName = usePathname();
     const isActive = pathName === link;
@@ -24,4 +24,4 @@ const MenuItem = (props: NavigationMenuItemProps) => {
     );
 };
 
-export default MenuItem;
+export default NavMenuItem;
