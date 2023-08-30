@@ -1,20 +1,12 @@
 'use client';
 import React from 'react';
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-} from '@/components/ui/navigation-menu';
-import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
-import Link from 'next/link';
-import { useGlobalStore } from '@/store/global.store';
+import { NavigationMenu, NavigationMenuList } from '@/components/ui/navigation-menu';
 import LangSelect from '@/components/lang-select';
 import ModeToggle from '@/components/theme-mode-toggle';
 import { Locale } from '@/i18n-config';
-import { LocaleType } from '@/localization/locale-types';
-import { langPathName } from '@/lib/utils';
+import { pathNameWithLang } from '@/lib/utils';
 import { HeaderDictionary, ModeToggleDictionary } from '@/localization';
+import MenuItem from '@/components/navigation-menu-item';
 
 interface HeaderProps {
     lang: Locale;
@@ -24,57 +16,15 @@ interface HeaderProps {
 
 export const Header = (props: HeaderProps) => {
     const { lang, headerDictionary, modeToggleDictionary } = props;
-    const [state, dispatch] = useGlobalStore();
-
-    React.useEffect(() => {
-        if (lang) {
-            dispatch({
-                type: 'locale-set',
-                payload: lang as LocaleType,
-            });
-        }
-    }, [dispatch, lang]);
 
     return (
-        <div className="mx-auto flex max-w-4xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div className="mx-auto flex max-w-xl items-center justify-between p-6 lg:px-8" aria-label="Global">
             <NavigationMenu>
                 <NavigationMenuList>
-                    <NavigationMenuItem>
-                        <Link href={langPathName('/', lang)} legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {headerDictionary.home}
-                                </h4>
-                            </NavigationMenuLink>
-                        </Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <Link href={langPathName('/register', lang)} legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {headerDictionary.register}
-                                </h4>
-                            </NavigationMenuLink>
-                        </Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <Link href={langPathName('/about', lang)} legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {headerDictionary.about}
-                                </h4>
-                            </NavigationMenuLink>
-                        </Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <Link href={langPathName('/account', lang)} legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
-                                    {headerDictionary.account}
-                                </h4>
-                            </NavigationMenuLink>
-                        </Link>
-                    </NavigationMenuItem>
+                    <MenuItem link={pathNameWithLang('/', lang)} title={headerDictionary.home} />
+                    <MenuItem link={pathNameWithLang('/register', lang)} title={headerDictionary.register} />
+                    <MenuItem link={pathNameWithLang('/about', lang)} title={headerDictionary.about} />
+                    <MenuItem link={pathNameWithLang('/account', lang)} title={headerDictionary.account} />
                 </NavigationMenuList>
             </NavigationMenu>
             <div className="flex items-center justify-between">

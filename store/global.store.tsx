@@ -5,6 +5,7 @@ import React from 'react';
 import { locales } from '@/localization';
 import { StoreAction } from './store.types';
 import { LocaleType } from '@/localization/locale-types';
+import { Locale } from '@/i18n-config';
 
 interface GlobalStore {
     isAuthenticated: boolean;
@@ -48,11 +49,21 @@ const useGlobalStore = () => {
 
 interface GlobalStoreProps {
     children: React.ReactNode;
+    lang: Locale;
 }
 
 const GlobalStoreProvider = (props: GlobalStoreProps) => {
-    const { children } = props;
+    const { children, lang } = props;
     const [state, dispatch] = React.useReducer(storeReducer, initialStoreState);
+
+    React.useEffect(() => {
+        if (lang) {
+            dispatch({
+                type: 'locale-set',
+                payload: lang as LocaleType,
+            });
+        }
+    }, [dispatch, lang]);
 
     return (
         <GlobalStoreStateContext.Provider value={state}>

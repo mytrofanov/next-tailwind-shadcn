@@ -1,7 +1,7 @@
 import { getLangShort } from './get-lang-short';
 import { redirectedPathName } from './redirectedPathName';
-import { langPathName } from './lang-path-name';
+import { pathNameWithLang } from './path-name-with-lang';
 import { cn } from './tailwind-merge';
 import { currentLanguageName } from './current-language-name';
 
-export { getLangShort, redirectedPathName, langPathName, cn, currentLanguageName };
+export { getLangShort, redirectedPathName, pathNameWithLang, cn, currentLanguageName };

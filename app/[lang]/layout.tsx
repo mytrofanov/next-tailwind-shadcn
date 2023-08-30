@@ -30,9 +30,9 @@ const RootLayout = async (props: RootLayoutProps) => {
     const { children, params } = props;
     const dictionary: Dictionary = await getDictionary(params.lang);
     return (
-        <html lang={params.lang}>
+        <html lang={params.lang} suppressHydrationWarning={true}>
             <body>
-                <GlobalStoreProvider>
+                <GlobalStoreProvider lang={params.lang}>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                         <Header
                             headerDictionary={dictionary['header']}
